@@ -1,0 +1,18 @@
+@if (this.loading) {
+<app-loading></app-loading>
+} @else if(!this.loading && this.books.length <= 0){
+<app-no-book></app-no-book>
+} @else{
+<div
+  class="w-full mx-auto max-w-7xl max-h-[800px] h-full overflow-y-auto flex flex-wrap gap-4 items-center p-4"
+>
+  @for (book of books; track $index) {
+  <div [routerLink]="['/book', book['id']]">
+    <img
+      src="{{ book['coverImage'] }}"
+      class="object-cover w-[300px] h-[500px] rounded-lg hover:border-4 hover:border-red-800 transition-all ease-in-out duration-500 cursor-pointer"
+    />
+  </div>
+  }
+</div>
+}

@@ -1,0 +1,14 @@
+<section class="w-full p-4 space-y-4">
+  <div
+    class="w-full p-2 bg-gradient-to-r from-amber-200 from-30% to-transparent relative rounded-l-xl"
+  >
+    <h2 class="text-lg font-black text-red-900 uppercase md:text-2xl">
+      {{ this.title }}
+    </h2>
+  </div>
+  <div class="flex px-2 overflow-x-auto gap-x-8">
+    @for (book of this.books; track $index) {
+    <app-small-book [book]="book"></app-small-book>
+    }
+  </div>
+</section>

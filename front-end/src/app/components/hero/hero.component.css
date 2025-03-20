@@ -1,0 +1,37 @@
+.fade-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: fadeLeftAnim 1s ease-in-out forwards;
+}
+
+@keyframes fadeLeftAnim {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translateX(200px);
+  animation: fadeRightAnim 1s ease-in-out forwards;
+}
+
+@keyframes fadeRightAnim {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.book-shadow {
+  box-shadow: 2rem 2rem 4rem rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,85 @@
+<div
+  class="w-full p-10 mx-auto mt-10 space-y-6 text-center border border-red-800 rounded-lg max-w-7xl"
+>
+  <h1 class="text-3xl font-black text-red-800 uppercase">Add a new Book</h1>
+  <form
+    [formGroup]="myForm"
+    (ngSubmit)="onSubmit(myForm)"
+    class="flex flex-col items-center justify-center w-full gap-y-4"
+  >
+    <div class="flex items-center gap-x-6">
+      <label class="font-semibold text-red-800 uppercase w-[120px]"
+        >Title</label
+      >
+      <input
+        formControlName="title"
+        class="w-[200px] py-1 px-4 rounded-lg border focus:outline-red-800 border-red-800 focus:border-red-800 text-red-800 bg-yellow-300"
+        type="text"
+      />
+    </div>
+    <div class="flex items-center gap-x-6">
+      <label class="font-semibold text-red-800 uppercase w-[120px]"
+        >Author</label
+      >
+      <input
+        formControlName="author"
+        class="w-[200px] py-1 px-4 rounded-lg border focus:outline-red-800 border-red-800 focus:border-red-800 text-red-800 bg-yellow-300"
+        type="text"
+      />
+    </div>
+    <div class="flex items-center gap-x-6">
+      <label class="font-semibold text-red-800 uppercase w-[120px]">Plot</label>
+      <textarea
+        formControlName="plot"
+        class="w-[200px] py-1 px-4 rounded-lg border focus:outline-red-800 border-red-800 focus:border-red-800 text-red-800 bg-yellow-300"
+      ></textarea>
+    </div>
+    <div class="flex items-center gap-x-6">
+      <label class="font-semibold text-red-800 uppercase w-[120px]"
+        >Cover url</label
+      >
+      <input
+        formControlName="coverImage"
+        class="w-[200px] py-1 px-4 rounded-lg border focus:outline-red-800 border-red-800 focus:border-red-800 text-red-800 bg-yellow-300"
+        type="text"
+      />
+    </div>
+    <div class="flex items-center gap-x-6">
+      <label class="font-semibold text-red-800 uppercase w-[120px]"
+        >Year Release</label
+      >
+      <input
+        formControlName="releaseYear"
+        class="w-[200px] py-1 px-4 rounded-lg border focus:outline-red-800 border-red-800 focus:border-red-800 text-red-800 bg-yellow-300"
+        type="number"
+      />
+    </div>
+    <div class="flex items-center gap-x-6">
+      <!-- CATEGORIES! -->
+      <label class="font-semibold text-red-800 uppercase w-[120px]"
+        >Category</label
+      >
+      <select
+        class="w-[200px] py-1 px-4 rounded-lg border focus:outline-red-800 border-red-800 focus:border-red-800 text-red-800 bg-yellow-300"
+        formControlName="categoryID"
+      >
+        @for (category of categories; track $index) {
+        <option [value]="category['categoryId']">{{ category["name"] }}</option>
+        }
+      </select>
+    </div>
+    <button
+      class="px-2 py-1 text-xl font-bold text-red-800 uppercase transition-all duration-300 ease-in bg-yellow-300 border border-red-800 rounded-lg hover:bg-red-800 hover:text-yellow-300 hover:border-transparent"
+      type="submit"
+    >
+      Create
+    </button>
+    @if( hasError){
+    <p
+      class="px-4 py-1 text-lg font-semibold text-red-800 uppercase duration-300 bg-yellow-400 rounded-lg"
+    >
+      Something went wrong! try again
+    </p>
+    }
+  </form>
+</div>

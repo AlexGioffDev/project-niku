@@ -1,0 +1,15 @@
+<div
+  class="relative overflow-hidden border border-stone-500 rounded-xl w-[400px] hidden md:block"
+>
+  <input
+    class="w-[85%] h-full p-2 bg-red-800 focus:outline-none text-yellow-300"
+    [(ngModel)]="searchQuery"
+    (keyup.enter)="search()"
+  />
+  <button
+    class="absolute w-[15%] h-full bg-yellow-300 flex justify-center items-center right-0 top-0"
+    (click)="search()"
+  >
+    <img src="search-icon.png" class="w-8 h-8" />
+  </button>
+</div>

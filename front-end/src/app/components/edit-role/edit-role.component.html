@@ -1,0 +1,22 @@
+<div>
+  <form
+    [formGroup]="myForm"
+    (ngSubmit)="onSubmit(myForm)"
+    class="flex items-center justify-center gap-x-4"
+  >
+    <select
+      class="px-2 py-1 font-semibold text-red-800 bg-yellow-400 rounded-lg"
+      formControlName="newRole"
+    >
+      <option value="USER">USER</option>
+      <option value="ADMIN">ADMIN</option>
+    </select>
+    @if(this.myForm.value['newRole'] !== this.user['role']){
+    <button
+      class="flex items-center justify-center w-4 h-4 p-4 font-semibold text-center text-yellow-400 bg-red-800 rounded-full"
+    >
+      &check;
+    </button>
+    }
+  </form>
+</div>

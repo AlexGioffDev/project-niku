@@ -1,0 +1,49 @@
+<div class="flex items-center justify-between w-full px-4 py-2">
+  <div
+    class="flex flex-row-reverse items-center cursor-pointer gap-x-2"
+    [routerLink]="['']"
+  >
+    <h1
+      class="flex text-2xl font-light tracking-tighter uppercase text-stone-900 gap-x-2"
+    >
+      Niku
+    </h1>
+    <img
+      alt="pile of books"
+      src="assets/icons/books.png"
+      class="object-cover w-10 h-10"
+    />
+  </div>
+  <app-search-input></app-search-input>
+
+  <ul class="flex items-center gap-x-4">
+    @if (this.authService.isAuthenticated()) { @if(this.authService.role() ===
+    "ADMIN"){
+    <p class="font-bold uppercase cursor-pointer" [routerLink]="['admin']">
+      Dashboard
+    </p>
+    }
+
+    <li
+      class="text-lg font-normal uppercase transition-all duration-200 ease-in cursor-pointer hover:text-red-800"
+      (click)="logout()"
+    >
+      Logout
+    </li>
+
+    } @else {
+    <li
+      [routerLink]="['auth/signup']"
+      class="text-lg font-normal uppercase transition-all duration-200 ease-in cursor-pointer hover:text-red-800"
+    >
+      Register
+    </li>
+    <li
+      [routerLink]="['auth/login']"
+      class="text-lg font-normal uppercase transition-all duration-200 ease-in cursor-pointer hover:text-red-800"
+    >
+      Login
+    </li>
+    }
+  </ul>
+</div>

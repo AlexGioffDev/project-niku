@@ -1,0 +1,19 @@
+@if (this.isLoading) {
+<app-loading></app-loading>
+} @else {
+<app-hero [book]="this.book"></app-hero>
+<div class="w-full max-w-5xl mx-auto">
+  <app-sections
+    title="Stories of Conflict & Survival"
+    [books]="this.warBooks"
+  ></app-sections>
+  <app-sections
+    title="Visions of the Future & the Unexplored"
+    [books]="this.scieneBooks"
+  ></app-sections>
+  <app-sections
+    title="Tales of Mystery, Magic & Fear"
+    [books]="this.horrorBooks"
+  ></app-sections>
+</div>
+}

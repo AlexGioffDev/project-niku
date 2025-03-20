@@ -1,0 +1,46 @@
+<div
+  class="flex flex-col items-center justify-center w-full h-full p-5 gap-y-4"
+>
+  <h3 class="text-2xl font-semibold uppercase text-stone-800">Login</h3>
+
+  <form
+    [formGroup]="myForm"
+    (ngSubmit)="onSubmit(myForm)"
+    class="flex flex-col items-center justify-center w-full gap-y-4"
+  >
+    <div class="flex items-center justify-between w-4/5 gap-x-4">
+      <label class="text-sm font-semibold uppercase">Username: </label>
+      <input
+        class="p-2 border rounded-md outline-none text-stone-900 focus:border-red-900"
+        formControlName="username"
+        placeholder="Create an username"
+      />
+    </div>
+    <div class="flex items-center justify-between w-4/5 gap-x-4">
+      <label class="text-sm font-semibold uppercase">Password: </label>
+      <input
+        class="p-2 border rounded-md outline-none text-stone-900 focus:border-red-900"
+        formControlName="password"
+        placeholder="Create a password"
+        type="password"
+      />
+    </div>
+    <button
+      class="px-4 py-1 text-center bg-red-800 text-stone-100 rounded-xl"
+      type="submit"
+    >
+      Login
+    </button>
+    <p>
+      You don't have an account?
+      <a [routerLink]="['/auth/signup']">create one.</a>
+    </p>
+    @if( hasError){
+    <p
+      class="px-4 py-1 text-lg font-semibold text-red-800 uppercase duration-300 bg-yellow-400 rounded-lg"
+    >
+      Something went wrong! try again
+    </p>
+    }
+  </form>
+</div>

@@ -1,0 +1,26 @@
+<article
+  class="flex flex-col items-start justify-between px-2 py-4 bg-red-800 rounded-lg"
+>
+  <div class="flex items-center text-xs gap-x-4">
+    <div class="flex items-center gap-x-2">
+      @for (value of [].constructor(5); track $index; let idx = $index) {
+
+      <div
+        class="w-4 h-4 border rounded-full border-stone-950"
+        [class]="{
+                            'bg-amber-300': idx < comment['rating'],
+                            'bg-stone-300': idx >= comment['rating'],
+                          }"
+      ></div>
+      }
+    </div>
+  </div>
+  <h3 class="mt-1 font-semibold">
+    <p class="text-yellow-300 capitalize">
+      {{ comment["username"] }}
+    </p>
+  </h3>
+  <p class="mt-1 text-stone-100 text-sm/6 max-h-[100px] overflow-y-auto">
+    {{ comment["content"] }}
+  </p>
+</article>

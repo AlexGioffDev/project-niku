@@ -1,0 +1,7 @@
+.book-shadow {
+  box-shadow: -2rem 2rem 4rem rgba(0, 0, 0, 0.7);
+}
+
+.title-section {
+  word-spacing: -0.1rem;
+}
