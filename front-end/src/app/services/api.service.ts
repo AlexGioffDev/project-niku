@@ -7,7 +7,7 @@ import {
   CategoriesBooks,
   SearchBooks,
 } from '../models/book.model';
-import { Users } from '../models/user.model';
+import { LoginResponse, Users } from '../models/user.model';
 import { Categories } from '../models/category.model';
 
 @Injectable({
@@ -22,16 +22,22 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/api/auth/register`, user);
   }
 
-  login(user: { username: string; password: string }) {
-    return this.http.post(`${this.baseUrl}/api/auth/login`, user);
+  login(user: {
+    username: string;
+    password: string;
+  }): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(
+      `${this.baseUrl}/api/auth/login`,
+      user
+    );
   }
 
   allBooks(): Observable<BooksAll> {
     return this.http.get<BooksAll>(`${this.baseUrl}/api/book/`);
   }
 
-  getBook(id: number): Observable<Book> {
-    return this.http.get<Book>(`${this.baseUrl}/api/book/${id}`);
+  getBook(id: number): Observable<{ Book: Book }> {
+    return this.http.get<{ Book: Book }>(`${this.baseUrl}/api/book/${id}`);
   }
 
   categoryBooks(category: number): Observable<CategoriesBooks> {

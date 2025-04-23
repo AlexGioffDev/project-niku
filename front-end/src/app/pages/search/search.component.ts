@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { NoBookComponent } from '../../components/no-book/no-book.component';
+import { Book } from '../../models/book.model';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +14,7 @@ import { NoBookComponent } from '../../components/no-book/no-book.component';
 export class SearchComponent implements OnInit {
   loading: boolean = true;
   query: string = '';
-  books: [] = [];
+  books: Book[] = [];
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,

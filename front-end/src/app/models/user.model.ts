@@ -8,3 +8,10 @@ export interface User {
   password: string;
   role: string;
 }
+
+export interface LoginResponse {
+  role: string;
+  token: string;
+  expirationDate: string;
+  username: string;
+}

@@ -4,6 +4,7 @@ import { HeroComponent } from '../../components/hero/hero.component';
 import { forkJoin } from 'rxjs';
 import { SectionsComponent } from '../../components/sections/sections.component';
 import { LoadingComponent } from '../../components/loading/loading.component';
+import { Book } from '../../models/book.model';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,9 @@ import { LoadingComponent } from '../../components/loading/loading.component';
 export class HomeComponent implements OnInit {
   isLoading: boolean = true;
   book: any;
-  warBooks = [];
-  scieneBooks = [];
-  horrorBooks = [];
+  warBooks: Book[] = [];
+  scieneBooks: Book[] = [];
+  horrorBooks: Book[] = [];
 
   constructor(private apiService: ApiService) {}
 

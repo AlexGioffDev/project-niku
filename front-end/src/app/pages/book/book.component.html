@@ -9,7 +9,7 @@
 >
   <div class="flex-shrink-0 w-[300px] md:w-[420px] md:h-[600px] mx-auto">
     <img
-      src="{{ book['coverImage'] }}"
+      src="{{ book?.['coverImage'] }}"
       class="object-cover w-full h-full rounded-lg md:book-shadow"
     />
   </div>
@@ -17,36 +17,34 @@
     <div>
       <p
         class="inline-block px-2 py-1 text-sm font-semibold text-red-900 uppercase bg-yellow-300 rounded-lg cursor-pointer"
-        [routerLink]="['/category', book['categoryId']]"
+        [routerLink]="['/category', book?.['categoryId']]"
       >
-        {{ book["categoryName"] }}
+        {{ book?.["categoryName"] }}
       </p>
       <h1 class="-mt-2 text-[32px] font-bold text-red-900 capitalize">
-        {{ book["title"] }}
+        {{ book?.["title"] }}
       </h1>
       <h3 class="pl-0 -mt-2 text-[18px]font-bold capitalize text-stone-800">
-        by {{ book["author"] }} - {{ book["releaseYear"] }}
+        by {{ book?.["author"] }} - {{ book?.["releaseYear"] }}
       </h3>
     </div>
     <div class="space-y-1 max-h-[300px] overflow-y-auto">
       <h2 class="text-xl font-semibold text-red-900 uppercase">Plot</h2>
       <p class="text-lg leading-tight text-justify text-stone-700">
-        {{ book["plot"] }}
+        {{ book?.["plot"] }}
       </p>
     </div>
-    @if(book["comments"].length > 0) {
+    @if ( book!.comments.length > 0) {
     <hr />
     <div
       class="flex p-4 mx-auto overflow-x-auto gap-x-8 lg:mx-0 lg:max-w-none lg:grid-cols-3"
     >
-      @for (comment of book['comments']; track $index) {
+      @for (comment of book?.['comments']; track $index) {
       <app-comment [comment]="comment"></app-comment>
       }
     </div>
-    }
-    <!-- FORM CREATE COMMENTS -->
-    @if(this.authService.isAuthenticated()){
-    <app-create-comment [bookId]="book['id']"></app-create-comment>
+    } @if(this.authService.isAuthenticated()){
+    <app-create-comment [bookId]="book!['id']"></app-create-comment>
     }
   </div>
 </div>

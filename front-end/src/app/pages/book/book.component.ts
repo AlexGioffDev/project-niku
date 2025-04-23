@@ -6,6 +6,7 @@ import { CreateCommentComponent } from '../../components/create-comment/create-c
 import { CommentComponent } from '../../components/comment/comment.component';
 import { NoBookComponent } from '../../components/no-book/no-book.component';
 import { LoadingComponent } from '../../components/loading/loading.component';
+import { Book } from '../../models/book.model';
 
 @Component({
   selector: 'app-book',
@@ -25,7 +26,7 @@ export class BookComponent implements OnInit, OnDestroy {
     private apiService: ApiService,
     public authService: AuthService
   ) {}
-  book: any;
+  book?: Book;
   isLoading: boolean = true;
   bookId?: number;
 
@@ -37,7 +38,7 @@ export class BookComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.book = null;
+    this.book = undefined;
     this.bookId = undefined;
   }
 

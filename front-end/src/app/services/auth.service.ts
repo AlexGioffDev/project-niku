@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { ApiService } from './api.service';
 import { tap } from 'rxjs';
+import { LoginResponse } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,6 @@ export class AuthService {
   isAuthenticated = signal(false);
   username = signal<string | null>(null);
   role = signal<string | null>(null);
-  favoriteBooks = signal<any[]>([]);
 
   constructor(private apiService: ApiService) {
     this.checkAuth();
@@ -20,15 +20,18 @@ export class AuthService {
 
   login(username: string, password: string) {
     return this.apiService.login({ username, password }).pipe(
-      tap((response) => {
-        const { token, username, role, favoriteBooks, expirationDate } =
-          response;
+      tap((response: LoginResponse) => {
+        // Utilizza il tipo LoginResponse
+        const { token, username, role, expirationDate } = response;
+
+        // Salva il token e altre informazioni nell'archivio locale
         localStorage.setItem(this.tokenKey, token);
         localStorage.setItem(this.expirationTokenKey, expirationDate);
+
+        // Imposta le informazioni di autenticazione nelle variabili
         this.isAuthenticated.set(true);
         this.username.set(username);
         this.role.set(role);
-        this.favoriteBooks.set(favoriteBooks);
       })
     );
   }
@@ -44,7 +47,6 @@ export class AuthService {
     this.isAuthenticated.set(false);
     this.username.set(null);
     this.role.set(null);
-    this.favoriteBooks.set([]);
   }
 
   private checkAuth() {
@@ -69,7 +71,6 @@ export class AuthService {
       next: (data) => {
         this.username.set(data['Username']);
         this.role.set(data['role']);
-        this.favoriteBooks.set(data['favoriteBooks']);
       },
       error: (err) => {
         this.logout();

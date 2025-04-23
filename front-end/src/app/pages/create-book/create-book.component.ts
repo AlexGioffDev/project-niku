@@ -8,6 +8,7 @@ import {
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-create-book',
@@ -19,7 +20,7 @@ export class CreateBookComponent implements OnInit {
   myForm: FormGroup = new FormGroup('');
   hasError: boolean = false;
   token = localStorage.getItem('auth_token');
-  categories = [];
+  categories: Category[] = [];
 
   constructor(
     private apiService: ApiService,
