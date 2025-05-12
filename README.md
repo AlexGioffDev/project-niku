@@ -30,8 +30,9 @@ It also includes an **admin dashboard** to manage users and books.
 ## 📸 Screenshots
 
 Screenshots of the app are available in the [`screenshots/`](./screenshots) folder.
-![Screenshot of Homepage](./screenshots/niku_home.png)
-![Screenshot of BookPage](./screenshots/niku_book.png)
+
+<img src="./screenshots/niku_home.png" alt="home" width=400 />
+<img src="./screenshots/niku_book.png" alt="book" width=400 />
 
 ## 🚧 Deployment
 
